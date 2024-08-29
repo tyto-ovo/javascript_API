@@ -7,28 +7,13 @@ blanco  #FFFFFF
 verde   #2A3F44
  */
 
-* {
+body {
   /* 
   margin: 0px;
   padding: 0px; */
   background-color: #212429;
   color: #ffffff;
   font-family: "Roboto", sans-serif;
-}
-hr {
-  margin: 1em auto;
-  height: 2px;
-  background-color: #2a3f44;
-  border: none;
-}
-head {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 10px;
-}
-head h1 {
-  /* text-align: center */
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -40,4 +25,58 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+hr {
+  margin: 1em auto;
+  height: 2px;
+  background-color: #2a3f44;
+  border: none;
+}
+header {
+  margin: 10px;
+  padding: 10px;
+}
+h1 {
+  padding-left: 30%;
+}
+
+main * {
+  background-color: #6c757e;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input {
+  background-color: white;
+  border-style: none;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+select {
+  background-color: white;
+  color: black;
+  border-style: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+button {
+  background-color: #0ecaf0;
+  border-style: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+.container {
+  width: 30%;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.textoDeafault {
+  text-align: center;
 }

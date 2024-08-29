@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="./assets/CSS/style.css" />
   </head>
   <body>
-    <head>
+    <header>
       <hr />
       <h1>Conversor de Monedas Nacional</h1>
       <hr />
-    </head>
+    </header>
+
     <main>
       <div class="container">
         <h2>Pesos CLP</h2>
@@ -20,15 +21,17 @@
           placeholder="Ingrese el monto en CLP"
           class="chileno"
         />
-        <p>Moneda a convertir:</p>
+        <p class="textoDeafault">Moneda a convertir:</p>
         <select name="coin" id="coin-select">
-          <option value="">--Seleccione Moneda--</option>
+          <option value="">Seleccione Moneda</option>
           <option value="dog">UF</option>
           <option value="cat">Dolar</option>
         </select>
         <button>Buscar</button>
+        <p class="textoDeafault">...</p>
       </div>
     </main>
+
     <script src="./assets/JS/script.js"></script>
   </body>
 </html>
