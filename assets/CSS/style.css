@@ -15,18 +15,7 @@ body {
   color: #ffffff;
   font-family: "Roboto", sans-serif;
 }
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-/* Firefox */
-/* input[type="number"] {
-  -moz-appearance: textfield;
-}
- */
 hr {
   margin: 1em auto;
   height: 2px;
@@ -55,6 +44,10 @@ input {
   color: black;
   padding: 10px;
   border-radius: 5px;
+  text-align: center;
+}
+select {
+  text-align-last: center;
 }
 select {
   background-color: white;
@@ -79,5 +72,8 @@ button {
   flex-direction: column;
 }
 .textoDeafault {
+  text-align: center;
+}
+.resultado {
   text-align: center;
 }

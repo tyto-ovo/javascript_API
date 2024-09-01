@@ -1,57 +1,87 @@
-async function getCoin(moneda) {
+// ------------ //
+// REQUEST DEL API //
+async function getCoin() {
   try {
-    const res = await fetch(`https://mindicador.cl/api/${moneda}`);
+    const res = await fetch("https://mindicador.cl/api");
     const data = await res.json();
     return data;
-    /*     return data.serie[1].valor; */
   } catch (error) {
-    alert(error.message);
+    console.error("Error:", error);
   }
 }
-console.log(getCoin("uf"));
+// ------------ //
 
-/* async function getUf() {
-  try {
-    const res = await fetch("https://mindicador.cl/api/uf");
-    const data = await res.json();
-    console.log(data);
-  } catch (error) {
-    alert(error.message);
-  }
+async function obtDatosGrafica(moneda) {
+  const data = await getCoin();
+  console.log(moneda);
 }
- */
-/* getCoin(); */
+obtDatosGrafica("uf");
+// ------------ //
+// FUNCION QUE APLICA PROMESA  //
+async function obtUf() {
+  const y = await getCoin();
+  /*   console.log(y["dolar"]["valor"]); */
+  return y["uf"]["valor"];
+}
 
-const monedaChilena = document.querySelector(".chilena");
+async function obtDolar() {
+  const y = await getCoin();
+  /*   console.log(y["dolar"]["valor"]); */
+  return y["dolar"]["valor"];
+}
+
+async function obtEuro() {
+  const y = await getCoin();
+  /*   console.log(y["euro"]["valor"]); */
+  return y["euro"]["valor"];
+}
+
+// ------------ //
+
+function blancoInicial() {
+  let nume = document.querySelector(".chilena");
+  let valor = document.getElementById("coin-select");
+
+  nume.value = "";
+  valor.value = "";
+}
+
+const formatClp = new Intl.NumberFormat("de-DE");
+const formatUsd = new Intl.NumberFormat("en-US", {
+  currency: "USD",
+  style: "currency",
+});
+const formatEu = new Intl.NumberFormat("en-EU", {
+  currency: "EUR",
+  style: "currency",
+});
+// ------------ //
 
 const ejecutar = document.getElementById("calcular");
 
-function calcular() {
-  const resultado = document.querySelector("textoDefault");
-
-  const tipoMoneda = document.getElementById("coin-select");
-  console.log(tipoMoneda.value);
+async function calcular() {
+  const resultado = document.querySelector(".resultado");
+  const monedaChilena = document.querySelector(".chilena");
+  const tipoMoneda = document.getElementById("coin-select").value;
   const num = monedaChilena.value;
-  const tipoCambio = getCoin(tipoMoneda);
+  let tipoCambio;
 
-  resultado.innerHTML = num * tipoCambio;
-}
-ejecutar.addEventListener("click", calcular);
-// Event listener para el botón de agregar tarea
-/* document.getElementById("agregarTarea").addEventListener("click", agregarTarea);
-
-// Función para agregar una nueva tarea
-function agregarTarea() {
-  const descripcion = document.getElementById("nuevaTarea").value;
-  if (descripcion.trim()) {
-    const nuevaTarea = {
-      id: generarId(), // mi generador de ID para que sea mas corto
-      descripcion: descripcion,
-      realizada: false,
-    };
-    tareas.push(nuevaTarea);
-    renderTareas();
-    document.getElementById("nuevaTarea").value = "";
+  if (tipoMoneda == "uf") {
+    tipoCambio = await obtUf();
+    d = formatClp.format((num / tipoCambio).toFixed(2));
+    resultado.innerHTML = `Resultado: ${d} UF `;
+  } else if (tipoMoneda == "dolar") {
+    tipoCambio = await obtDolar();
+    d = formatUsd.format((num / tipoCambio).toFixed(2));
+    resultado.innerHTML = `Resultado: ${d} `;
+  } else if (tipoMoneda == "euro") {
+    tipoCambio = await obtEuro();
+    d = formatEu.format((num / tipoCambio).toFixed(2));
+    resultado.innerHTML = `Resultado: ${d}`;
   }
+  /*   resultado.innerHTML = `Resultado: $${num / tipoCambio}`; */
 }
- */
+
+ejecutar.addEventListener("click", calcular);
+
+blancoInicial();

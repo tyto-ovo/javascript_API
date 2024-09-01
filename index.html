@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Desafio API</title>
     <link rel="stylesheet" href="./assets/CSS/style.css" />
-    <!--     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <link
+      rel="shortcut icon"
+      href="./assets/imgs/favicon.ico"
+      type="image/x-icon"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header>
@@ -18,7 +23,7 @@
       <div class="container">
         <h2>Pesos CLP</h2>
         <input
-          type="number"
+          inputmode="numeric"
           placeholder="Ingrese el monto en CLP"
           class="chilena"
         />
@@ -27,13 +32,15 @@
           <option value="">Seleccione Moneda</option>
           <option value="uf">UF</option>
           <option value="dolar">Dolar</option>
+          <option value="euro">Euro</option>
         </select>
         <button id="calcular">Buscar</button>
-        <p class="textoDefault"></p>
+        <p class="resultado">...</p>
       </div>
-      <!--     <div>
+      <h2>Historial de los últimos 10 días</h2>
+      <div class="grafica">
         <canvas id="myChart"></canvas>
-      </div> -->
+      </div>
     </main>
 
     <script src="./assets/JS/script.js"></script>
