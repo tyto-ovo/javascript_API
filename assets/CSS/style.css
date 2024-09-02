@@ -77,3 +77,11 @@ button {
 .resultado {
   text-align: center;
 }
+
+.grafica {
+  width: 80%;
+}
+.label {
+  padding: 10px;
+  border-radius: 5px;
+}
